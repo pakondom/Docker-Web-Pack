@@ -8,9 +8,9 @@ Go to Terminal and type command below to start the LEMP stack:
 
 ```
 $ docker-compose up -d
+OR
+$ docker-compose start
 ```
-
-Access through IP associated to your docker machine (generally it is 192.168.99.100 by default)
 
 # Details
 
