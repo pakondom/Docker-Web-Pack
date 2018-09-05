@@ -34,7 +34,7 @@ Access through IP associated to your docker machine (generally it is 192.168.99.
 
 ## MySQL Default Root Password
 
-`caloriesblahblah`
+`1212312121`
 
 Please feel free to edit `docker-compose.yml` file per your demand.
 
