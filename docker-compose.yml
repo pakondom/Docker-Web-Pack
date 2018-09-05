@@ -13,10 +13,13 @@ services:
      - ./nginx/log:/var/log/nginx
     depends_on:
      - phpfpm
+    networks:
+      lemp-network:
+        ipv4_address: ${LEMP_NGINX_IP}
+
   phpfpm:
     image: nuuneoi/php7-fpm
     container_name: lemp-phpfpm
-    # Uncomment lines below if you want to make php7-fpm be available outside the bridge
     #ports:
     # - "9000:9000" 
     volumes:
@@ -24,15 +27,19 @@ services:
      - ./php7fpm/conf/fpm/php.ini:/etc/php/7.0/fpm/php.ini
      - ./php7fpm/conf/fpm/php-fpm.conf:/etc/php/7.0/cli/php-fpm.conf
      - ./nginx/site:/usr/share/nginx/html
+    networks:
+      lemp-network:
+        ipv4_address: ${LEMP_PHP7FPM}
+
   mysql-data:
     image: busybox
     container_name: lemp-mysql-data
     volumes:
      - ./mysql/storage:/var/lib/mysql
+
   mysql:
     image: nuuneoi/mysql:5.7.11
     container_name: lemp-mysql
-    # Uncomment lines below if you want to make mysql server be available outside the bridge
     #ports:
     # - "3306:3306"
     volumes_from:
@@ -41,8 +48,16 @@ services:
      - ./mysql/conf:/etc/mysql/conf.d
      - ./mysql/log:/var/log/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: caloriesblahblah
+      MYSQL_ROOT_PASSWORD: 1212312121
+    networks:
+      lemp-network:
+        ipv4_address: ${LEMP_MYSQL_IP}
 
 networks:
-  default:
-
+  lemp-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: ${LEMP_SUBNET}
+          gateway: ${LEMP_GATEWAY}
