@@ -1,6 +1,6 @@
 # lemp-docker-starter-kit
 
-A starter kit to run LEMP stack (Linux, nginx, MySQL and PHP) with docker.
+A starter kit to run LEMP stack (Linux, nginx, MySQL + PhpMyAdmin and PHP) with docker.
 
 # Usage
 
