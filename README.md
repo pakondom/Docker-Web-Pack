@@ -13,6 +13,7 @@ $ docker-compose start
 ```
 
 # phpMyAdmin
+in Docker-Web-Pack dir
 ```
 $ mkdir nginx/site/phpMyAdmin/tmp-file && chmod 777 nginx/site/phpMyAdmin/tmp-file
 ```
