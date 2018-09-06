@@ -16,14 +16,12 @@ services:
         ipv4_address: ${LEMP_NGINX_IP}
 
   phpfpm:
-    image: nuuneoi/php7-fpm
+    image: bitnami/php-fpm:latest
     container_name: lemp-phpfpm
     #ports:
     # - "9000:9000" 
     volumes:
-     - ./php7fpm/conf/cli/php.ini:/etc/php/7.0/cli/php.ini
-     - ./php7fpm/conf/fpm/php.ini:/etc/php/7.0/fpm/php.ini
-     - ./php7fpm/conf/fpm/php-fpm.conf:/etc/php/7.0/cli/php-fpm.conf
+    # - ./php-fpm/php-fpm.conf:/opt/bitnami/php/etc/php-fpm/php-fpm.conf
      - ./nginx/site:/usr/share/nginx/html
     networks:
       lemp-network:
