@@ -1,9 +1,7 @@
 version: '2'
 services:
   nginx:
-    image: nginx:1.9.12
-    # or use image below if you need the nginx with Lua supported
-    #image: nuuneoi/nginx-extras
+    image: nginx
     container_name: lemp-nginx
     ports:
      - "80:80"
@@ -38,7 +36,7 @@ services:
      - ./mysql/storage:/var/lib/mysql
 
   mysql:
-    image: nuuneoi/mysql:5.7.11
+    image: mariadb
     container_name: lemp-mysql
     #ports:
     # - "3306:3306"
