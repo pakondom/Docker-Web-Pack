@@ -1,4 +1,4 @@
 mysql/storage/
 mysql/log/
 nginx/log/
-nginx/site/phpMyAdmin/temp/twig
+nginx/site/phpMyAdmin/tmp/twig
