@@ -12,6 +12,11 @@ OR
 $ docker-compose start
 ```
 
+# phpMyAdmin
+```
+$ mkdir nginx/site/phpMyAdmin/tmp-file && chmod 777 nginx/site/phpMyAdmin/tmp-file
+```
+
 # Details
 
 ## Docker Containers name
