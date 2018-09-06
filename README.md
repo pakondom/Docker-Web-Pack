@@ -30,8 +30,6 @@ $ docker-compose start
 
 **Path to add your custom mysql configuration**: `./mysql/conf`
 
-**Path to edit your php7-fpm configuration**: `./php7fpm/conf`
-
 ## MySQL Default Root Password
 
 `1212312121`
