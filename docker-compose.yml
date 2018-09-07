@@ -27,22 +27,16 @@ services:
       lemp-network:
         ipv4_address: ${LEMP_PHP7FPM}
 
-  mysql-data:
-    image: busybox
-    container_name: lemp-mysql-data
-    volumes:
-     - ./mysql/storage:/var/lib/mysql
-
   mysql:
     image: mariadb
     container_name: lemp-mysql
     #ports:
     # - "3306:3306"
-    volumes_from:
-     - mysql-data
+    #volumes_from:
+    # - mysql-data
     volumes:
-     - ./mysql/conf:/etc/mysql/conf.d
-     - ./mysql/log:/var/log/mysql
+      - ./mysql/initdb/:/docker-entrypoint-initdb.d
+      - ./mysql/data/:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: 1212312121
     networks:
