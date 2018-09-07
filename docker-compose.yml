@@ -1,7 +1,7 @@
 version: '2'
 services:
   nginx:
-    image: nginx
+    image: nginx:latest
     container_name: lemp-nginx
     ports:
      - "80:80"
@@ -28,12 +28,10 @@ services:
         ipv4_address: ${LEMP_PHP7FPM}
 
   mysql:
-    image: mariadb
+    image: mariadb:latest
     container_name: lemp-mysql
     #ports:
     # - "3306:3306"
-    #volumes_from:
-    # - mysql-data
     volumes:
       - ./mysql/initdb/:/docker-entrypoint-initdb.d
       - ./mysql/data/:/var/lib/mysql
