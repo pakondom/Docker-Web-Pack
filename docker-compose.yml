@@ -2,7 +2,7 @@ version: '2'
 services:
   nginx:
     image: nginx:latest
-    container_name: lemp-nginx
+    container_name: docker-web-nginx
     ports:
      - "80:80"
     volumes:
@@ -17,7 +17,7 @@ services:
 
   phpfpm:
     image: bitnami/php-fpm:latest
-    container_name: lemp-phpfpm
+    container_name: docker-web-phpfpm
     #ports:
     # - "9000:9000" 
     volumes:
@@ -27,19 +27,20 @@ services:
       lemp-network:
         ipv4_address: ${LEMP_PHP7FPM}
 
-  mysql:
-    image: mariadb:latest
-    container_name: lemp-mysql
-    #ports:
-    # - "3306:3306"
-    volumes:
-      - ./mysql/initdb/:/docker-entrypoint-initdb.d
-      - ./mysql/data/:/var/lib/mysql
+  postgresql:
+    image: postgres:9.3
+    container_name: docker-web-postgresql
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 1212312121
+      POSTGRES_PASSWORD: asdf
+    volumes:
+      - ./postgresql/data:/var/lib/postgresql/data
+      - ./postgresql/conf:/etc/postgresql/
+    ports:
+      - "5432:5432"
     networks:
       lemp-network:
-        ipv4_address: ${LEMP_MYSQL_IP}
+        ipv4_address: ${LEMP_POSTGRES_IP}
 
 networks:
   lemp-network:
